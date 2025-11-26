@@ -1,0 +1,108 @@
+<?php
+// PHP placeholder to satisfy "PHP + HTML + CSS + JS" requirement.
+// All quiz logic is handled on the client using JavaScript (no backend, no DB).
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Quiz Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="app-wrapper">
+
+    <!-- START SCREEN -->
+    <section id="start-screen" class="screen active">
+        <h1 class="app-title">Quiz Galaxy</h1>
+        <p class="subtitle">
+            Choose a category, pick your difficulty, and race against the timer!
+        </p>
+        <button class="primary-btn" onclick="goToCategoryScreen()">
+            Start Your Journey 🚀
+        </button>
+    </section>
+
+    <!-- CATEGORY SCREEN -->
+    <section id="category-screen" class="screen">
+        <h2>Select Category</h2>
+        <p class="subtitle">Pick what you feel like playing today.</p>
+
+        <div class="card-grid">
+            <div class="select-card" onclick="selectCategory('general')">
+                <h3>🧠 General Knowledge</h3>
+                <p>World, facts, random trivia.</p>
+            </div>
+            <div class="select-card" onclick="selectCategory('tech')">
+                <h3>💻 Technology</h3>
+                <p>Programming, web, CS basics.</p>
+            </div>
+            <div class="select-card" onclick="selectCategory('math')">
+                <h3➗>➗ Maths & Logic</h3>
+                <p>Numbers, patterns, reasoning.</p>
+            </div>
+        </div>
+
+        <button class="secondary-btn" onclick="backToStart()">⬅ Back</button>
+    </section>
+
+    <!-- DIFFICULTY SCREEN -->
+    <section id="difficulty-screen" class="screen">
+        <h2>Select Difficulty</h2>
+        <p class="subtitle">Easy warmup, or go hard mode?</p>
+
+        <div class="btn-row">
+            <button class="pill-btn easy" onclick="selectDifficulty('easy')">Easy 😊</button>
+            <button class="pill-btn medium" onclick="selectDifficulty('medium')">Medium 😎</button>
+            <button class="pill-btn hard" onclick="selectDifficulty('hard')">Hard 🔥</button>
+        </div>
+
+        <button class="secondary-btn" onclick="backToCategory()">⬅ Back</button>
+    </section>
+
+    <!-- QUIZ SCREEN -->
+    <section id="quiz-screen" class="screen">
+        <div class="top-bar">
+            <div id="category-label"></div>
+            <div id="difficulty-label"></div>
+        </div>
+
+        <div class="top-bar bottom-space">
+            <div id="question-count"></div>
+            <div id="timer" class="timer-badge">⏱ 15s</div>
+        </div>
+
+        <div class="progress-track">
+            <div id="progress-bar"></div>
+        </div>
+
+        <h2 id="question-text" class="question-text"></h2>
+        <div id="options" class="options-list"></div>
+
+        <button id="skip-btn" class="secondary-btn" onclick="skipQuestion()">Skip ⏭</button>
+    </section>
+
+    <!-- RESULT SCREEN -->
+    <section id="result-screen" class="screen">
+        <h2>Quiz Summary 🎉</h2>
+        <p id="score-text" class="subtitle"></p>
+
+        <div class="chart-container">
+            <canvas id="correctWrongChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="timeChart"></canvas>
+        </div>
+
+        <button class="primary-btn" onclick="restartQuiz()">Play Again 🔁</button>
+        <button class="secondary-btn" onclick="backToStart()">Back to Home 🏠</button>
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
