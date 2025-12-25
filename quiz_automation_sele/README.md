@@ -58,6 +58,4 @@ CI / Automation suggestions
 
 Notes
 - The script's exact behavior depends on the current contents of `test_quiz.py`. Review that file to confirm assumptions (browser type, waits, selectors, screenshot filenames).
-- If you'd like, I can:
-  - Add a `requirements.txt` and a small runner script that starts the local server, runs the test headlessly, and collects screenshots.
-  - Modify `test_quiz.py` to use `webdriver-manager` for easier driver handling.
+
